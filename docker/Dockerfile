@@ -7,13 +7,14 @@ RUN apt-get update && \
     npm \
     curl
 
-RUN curl -fsSL https://deb.nodesource.com/setup_18.1 | sudo -E bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x
 RUN apt-get install nodejs
 
-COPY src/ .
+COPY package.json .
 RUN npm install
+COPY build ./build
 
 ENV APP_PORT 5000
 
-CMD [ "/bin/bash", "-c", "node app.py"]
-# CMD [ "/bin/bash", "-c", "~/.venvs/venv/bin/python3 app.py"]
+CMD [ "/bin/bash", "-c", "npm run serve"]
+# CMD [ "/bin/bash", "-c", "ls"]

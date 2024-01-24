@@ -1,7 +1,9 @@
 version: "3.5"
 services:
   website:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
     ports:
       - "${APP_PORT}:${APP_PORT}"
     image: ${CONTAINER_NAME}:dev

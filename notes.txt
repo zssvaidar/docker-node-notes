@@ -1,0 +1,4 @@
+npm install
+npm build
+npx ts-node src/app.ts
+tsc

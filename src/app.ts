@@ -6,4 +6,3 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const options: { /* port: number */ } = parse_args()
-// const PORT = options.port || 5000
