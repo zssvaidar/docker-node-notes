@@ -1,0 +1,10 @@
+version: "3.5"
+services:
+  website:
+    build: .
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    image: ${CONTAINER_NAME}:dev
+    container_name: ${CONTAINER_NAME}
+    environment:
+      APP_PORT: ${APP_PORT}
