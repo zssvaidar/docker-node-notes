@@ -12,7 +12,8 @@ node {
        }
 
        stage('Test'){
-
+        
+         env.SOME_SECRET = credentials("SOME_SECRET") // AN_ACCESS_KEY = credentials('my-predefined-secret-text')
          env.NODE_ENV = "test"
 
          print "Environment will be : ${env.NODE_ENV}"
@@ -21,6 +22,11 @@ node {
          echo "${SOME}"
          echo "${SOME}"
          echo "${SOME}"
+
+         echo "${env.SOME_SECRET}"
+         echo "${env.SOME_SECRET}"
+         echo "${env.SOME_SECRET}"
+         echo "${env.SOME_SECRET}"
 
         //  sh 'node -v'
         //  sh 'npm prune'
