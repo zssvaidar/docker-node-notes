@@ -25,13 +25,13 @@ node {
         echo "${SOME}"
         echo "${SOME}"
 
-        withCredentials([string(credentialsId: 'new-c1', variable: 'SOME_SECRET')]) {
-        // withCredentials([usernamePassword(credentialsId: 'SOME_SECRET', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        echo "${SOME_SECRET}"
+        withCredentials([string(credentialsId: 'SOME_SECRET', variable: 'SOME_SECRET')]) {
+          // withCredentials([usernamePassword(credentialsId: 'SOME_SECRET', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+          echo "${env.SOME_SECRET}"
 
-        //   echo USERNAME
+          //   echo USERNAME
 
-        //   echo "username is $USERNAME"
+          //   echo "username is $USERNAME"
         }
 
 
