@@ -13,9 +13,9 @@ node {
 
       stage('Test'){
         
-        environment {
-          SOME_SECRET = credentials("SOME_SECRET") // AN_ACCESS_KEY = credentials('my-predefined-secret-text')
-        }
+        // environment {
+        //   SOME_SECRET = credentials("SOME_SECRET") // AN_ACCESS_KEY = credentials('my-predefined-secret-text')
+        // }
         env.NODE_ENV = "test"
 
         print "Environment will be : ${env.NODE_ENV}"
@@ -25,19 +25,15 @@ node {
         echo "${SOME}"
         echo "${SOME}"
 
-          withCredentials([string(credentialsId: 'SOME_SECRET', variable: 'SOME_SECRET')]) {
+        withCredentials([string(credentialsId: 'SOME_SECRET', variable: 'SOME_SECRET')]) {
         // withCredentials([usernamePassword(credentialsId: 'SOME_SECRET', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          sh 'echo $SOME_SECRET'
+        echo "${SOME_SECRET}"
 
         //   echo USERNAME
 
         //   echo "username is $USERNAME"
         }
 
-        echo "${SOME_SECRET}"
-        echo "${SOME_SECRET}"
-        echo "${SOME_SECRET}"
-        echo "${SOME_SECRET}"
 
         //  sh 'node -v'
         //  sh 'npm prune'
