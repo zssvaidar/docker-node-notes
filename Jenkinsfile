@@ -25,10 +25,9 @@ node {
         echo "${SOME}"
         echo "${SOME}"
 
-        withCredentials([string(credentialsId: 'SOME_SECRET', variable: 'SOME_SECRET',
-                    usernameVariable: 'admin')]) {
+        withCredentials([string(credentialsId: 'SOME_SECRET_2', variable: 'SOME_SECRET_2')]) {
           // withCredentials([usernamePassword(credentialsId: 'SOME_SECRET', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          echo "${env.SOME_SECRET}"
+          echo "${SOME_SECRET_2}"
 
           //   echo USERNAME
 
