@@ -27,7 +27,8 @@ node {
 
         withCredentials([string(credentialsId: 'SOME_SECRET_2', variable: 'SOME_SECRET_2')]) {
           // withCredentials([usernamePassword(credentialsId: 'SOME_SECRET', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          sh "echo ${SOME_SECRET_2}"
+            env.X = SOME_SECRET_2
+          sh "echo ${env.X}"
 
           //   echo USERNAME
 
