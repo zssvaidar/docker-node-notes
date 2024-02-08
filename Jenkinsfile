@@ -25,6 +25,14 @@ node {
         echo "${SOME}"
         echo "${SOME}"
 
+        // withCredentials([usernamePassword(credentialsId: 'SOME_SECRET', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        //   sh 'echo $SOME_SECRET'
+
+        //   echo USERNAME
+
+        //   echo "username is $USERNAME"
+        // }
+
         echo "${SOME_SECRET}"
         echo "${SOME_SECRET}"
         echo "${SOME_SECRET}"
