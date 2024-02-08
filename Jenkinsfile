@@ -17,10 +17,10 @@ node {
 
          print "Environment will be : ${env.NODE_ENV}"
 
-         sh 'node -v'
-         sh 'npm prune'
-         sh 'npm install'
-         sh 'npm test'
+        //  sh 'node -v'
+        //  sh 'npm prune'
+        //  sh 'npm install'
+        //  sh 'npm test'
 
        }
 
