@@ -2,3 +2,5 @@ npm install
 npm build
 npx ts-node src/app.ts
 tsc
+
+git add . && git commit -m "." && git push origin deploy-first
