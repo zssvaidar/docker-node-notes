@@ -11,7 +11,7 @@ node {
       echo "$WORKSPACE"
       fileOperations([fileCopyOperation(excludes: '',
                                   flattenFiles: false,
-                                  includes: "$WORKSPACE/*",
+                                  includes: "$WORKSPACE/**/*.*",
                                   targetLocation: '/home/dev/artifacts/')])
       }
 
