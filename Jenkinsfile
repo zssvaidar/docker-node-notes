@@ -6,6 +6,7 @@ node {
 
     try {
 
+      checkout scm
       stage('Checkout'){
       echo "$WORKSPACE"
       // fileOperations([fileCopyOperation(excludes: '',
