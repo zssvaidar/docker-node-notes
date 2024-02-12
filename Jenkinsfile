@@ -18,8 +18,8 @@ node {
 
         // steps {
           echo "$WORKSPACE"
-          zip zipFile: "$WORKSPACE/output.zip", dir: '', glob: '', archive: true, overwrite: true
-          archiveArtifacts artifacts: "$WORKSPACE/output.zip", fingerprint: true
+          zip zipFile: "output.zip", dir: '', glob: '', archive: true, overwrite: true
+          archiveArtifacts artifacts: "output.zip", fingerprint: true
           zip zipFile: '/home/dev/output2.zip', dir: '', glob: '', archive: true, overwrite: true
           archiveArtifacts artifacts: '/home/dev/output2.zip', fingerprint: true
         // }
