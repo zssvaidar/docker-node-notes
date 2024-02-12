@@ -12,8 +12,6 @@ node {
       // zip zipFile: 'zipFile.zip', dir: '/home/dev/artifacts/'
       
 
-      sh 'mkdir archive'
-      sh 'echo test > archive/'
       zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
       archiveArtifacts artifacts: 'test.zip', fingerprint: true
 
