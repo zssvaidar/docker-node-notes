@@ -14,7 +14,7 @@ node {
 
       sh 'mkdir archive'
       sh 'echo test > archive/test.txt'
-      zip zipFile: 'test.zip', archive: false, dir: 'archive'
+      zip zipFile: 'test.zip', archive: true, dir: 'archive'
       archiveArtifacts artifacts: 'test.zip', fingerprint: true
 
       // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
