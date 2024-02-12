@@ -6,69 +6,37 @@ node {
 
     try {
 
-       stage('Checkout'){
-
-          // checkout scm
-       }
+      stage('Checkout'){
+      echo "$WORKSPACE"
+      // fileOperations([fileCopyOperation(excludes: '',
+      //                             flattenFiles: false,
+      //                             includes: 'C:\workspace\Hello\**',
+      //                             targetLocation: 'F:\Test\Sample')])
+      }
 
       stage('Test'){
 
-        // environment {
-        //   SOME_SECRET = credentials("SOME_SECRET") // AN_ACCESS_KEY = credentials('my-predefined-secret-text')
-        // }
-        // env.NODE_ENV = "test"
-
-        // print "Environment will be : ${env.NODE_ENV}"
-
-        // echo "${SOME}"
-        // echo "${SOME}"
-        // echo "${SOME}"
-        // echo "${SOME}"
-
-        // withCredentials([string(credentialsId: 'SOME_SECRET_2', variable: 'SOME_SECRET_2')]) {
-        //   // withCredentials([usernamePassword(credentialsId: 'SOME_SECRET', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        //   echo $SOME_SECRET_2
-
-        //   //   echo USERNAME
-
-        //   //   echo "username is $USERNAME"
-        // }
-
-
-        //  sh 'node -v'
-        //  sh 'npm prune'
-        //  sh 'npm install'
-        //  sh 'npm test'
-
       }
 
-       stage('Build Docker'){
+      stage('Build Docker'){
 
-            echo 'dockerBuild.sh'
-       }
+          echo 'dockerBuild.sh'
+      }
 
-       stage('Deploy'){
+      stage('Deploy'){
 
-         echo 'Push to Repo'
-        //  sh './dockerPushToRepo.sh'
+        echo 'Push to Repo'
 
-         echo 'ssh to web server and tell it to pull new image'
-        //  sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
+        echo 'ssh to web server and tell it to pull new image'
 
-       }
+        sh 'mkdir $WORKSPACE/output'
+        sh 'cp -r /var/lib/jenkins/workspace/z'
+      }
 
-       stage('Cleanup'){
+      stage('Cleanup'){
 
-         echo 'prune and cleanup'
-        //  sh 'npm prune'
-        //  sh 'rm node_modules -rf'
-
-        //  mail body: 'project build successful',
-        //              from: 'xxxx@yyyyy.com',
-        //              replyTo: 'xxxx@yyyy.com',
-        //              subject: 'project build successful',
-        //              to: 'yyyyy@yyyy.com'
-       }
+        echo 'prune and cleanup'
+      }
 
 
 
