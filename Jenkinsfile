@@ -30,8 +30,8 @@ node {
 
         echo 'ssh to web server and tell it to pull new image'
 
-        sh 'mkdir $WORKSPACE/output'
-        sh 'cp -r /var/lib/jenkins/workspace/z'
+        // sh 'mkdir $WORKSPACE/output'
+        // sh 'cp -r /var/lib/jenkins/workspace/z'
       }
 
       stage('Cleanup'){
