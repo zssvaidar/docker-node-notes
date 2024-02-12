@@ -16,13 +16,13 @@ node {
         // archiveArtifacts artifacts: 'test.zip', fingerprint: true
         // zip dir: "$WORKSPACE", zipFile: "$WORKSPACE/artifacts/Reports_Build_${BUILD_NUMBER}.zip", archive: true
 
-        steps {
+        // steps {
           echo "$WORKSPACE"
           zip zipFile: "$WORKSPACE/output.zip", dir: '', glob: '', archive: true, overwrite: true
           archiveArtifacts artifacts: 'output.zip', fingerprint: true
           zip zipFile: '/home/dev/output.zip', dir: '', glob: '', archive: true, overwrite: true
           archiveArtifacts artifacts: 'output.zip', fingerprint: true
-        }
+        // }
         // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
         // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
 
