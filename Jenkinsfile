@@ -12,7 +12,7 @@ node {
       // zip zipFile: 'zipFile.zip', dir: '/home/dev/artifacts/'
       
       zip zipFile: 'test.zip', archive: true, dir: "$WORKSPACE"
-      archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
+      // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
 
       // fileOperations([fileCopyOperation(excludes: '',
       //                             flattenFiles: false,
