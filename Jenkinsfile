@@ -18,10 +18,11 @@ node {
 
         // steps {
           echo "$WORKSPACE"
-          archiveArtifacts artifacts: "output.zip", fingerprint: true
-          zip zipFile: "output.zip", dir: '', glob: '', archive: true, overwrite: true
-          zip zipFile: '/home/dev/output2.zip', dir: '', glob: '', archive: true, overwrite: true
-          archiveArtifacts artifacts: '/home/dev/output2.zip', fingerprint: true
+          zip file:"$WORKSPACE/**", zipFile: "output.zip", dir: '', glob: '', archive: true, overwrite: true
+          // archiveArtifacts artifacts: "output.zip", fingerprint: true
+          // zip zipFile: "output.zip", dir: '', glob: '', archive: true, overwrite: true
+          // zip zipFile: '/home/dev/output2.zip', dir: '', glob: '', archive: true, overwrite: true
+          // archiveArtifacts artifacts: '/home/dev/output2.zip', fingerprint: true
         // }
         // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
         // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
