@@ -9,10 +9,10 @@ node {
       checkout scm
       stage('Checkout'){
       echo "$WORKSPACE"
-      // fileOperations([fileCopyOperation(excludes: '',
-      //                             flattenFiles: false,
-      //                             includes: 'C:\workspace\Hello\**',
-      //                             targetLocation: 'F:\Test\Sample')])
+      fileOperations([fileCopyOperation(excludes: '',
+                                  flattenFiles: false,
+                                  includes: '$WORKSPACE/*',
+                                  targetLocation: '/home/dev/artifacts/')])
       }
 
       stage('Test'){
