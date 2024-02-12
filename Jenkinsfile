@@ -13,8 +13,8 @@ node {
       
 
       sh 'mkdir archive'
-      sh 'echo test > archive/test.txt'
-      zip zipFile: 'test.zip', archive: true, dir: 'archive'
+      sh 'echo test > archive/'
+      zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
       archiveArtifacts artifacts: 'test.zip', fingerprint: true
 
       // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
