@@ -13,8 +13,9 @@ node {
       
 
       // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
-      zip archive
+      // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
       // archiveArtifacts artifacts: 'test.zip', fingerprint: true
+      zip dir: "${workspace}/target", zipFile: "Reports_Build_${BUILD_NUMBER}.zip"
 
       // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
       // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
