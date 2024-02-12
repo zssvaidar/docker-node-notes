@@ -9,7 +9,11 @@ node {
       // checkout scm
       stage('Checkout'){
       echo "$WORKSPACE"
-      zip zipFile: 'zipFile.zip', dir: '/home/dev/artifacts/'
+      // zip zipFile: 'zipFile.zip', dir: '/home/dev/artifacts/'
+      
+      zip zipFile: 'test.zip', archive: false, dir: 'archive'
+      archiveArtifacts artifacts: 'test.zip', fingerprint: true
+
       // fileOperations([fileCopyOperation(excludes: '',
       //                             flattenFiles: false,
       //                             includes: "$WORKSPACE/**",
