@@ -12,8 +12,9 @@ node {
       // zip zipFile: 'zipFile.zip', dir: '/home/dev/artifacts/'
       
 
-      zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
-      archiveArtifacts artifacts: 'test.zip', fingerprint: true
+      // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
+      zip archive
+      // archiveArtifacts artifacts: 'test.zip', fingerprint: true
 
       // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
       // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
