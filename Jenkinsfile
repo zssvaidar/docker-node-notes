@@ -18,7 +18,7 @@ node {
 
         // steps {
           echo "$WORKSPACE"
-          zip zipFile: "${WORKSPACE}/build/${PACKAGE_VERSION}.zip", dir: "$WORKSPACE", glob: '', overwrite: true
+          zip zipFile: "${WORKSPACE}/build/output.zip", dir: "$WORKSPACE", glob: '', overwrite: true
           archiveArtifacts artifacts: "output.zip", fingerprint: true
 
           // zip zipFile: "output.zip", dir: '', glob: '', archive: true, overwrite: true
