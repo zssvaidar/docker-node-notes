@@ -15,7 +15,9 @@ node {
       // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
       // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
       // archiveArtifacts artifacts: 'test.zip', fingerprint: true
-      zip dir: "$WORKSPACE", zipFile: "$WORKSPACE/artifacts/Reports_Build_${BUILD_NUMBER}.zip", archive: true
+      // zip dir: "$WORKSPACE", zipFile: "$WORKSPACE/artifacts/Reports_Build_${BUILD_NUMBER}.zip", archive: true
+
+      zip zipFile: 'output.zip', dir: '', glob: '', archive: true, overwrite: true
 
       // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
       // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
