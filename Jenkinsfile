@@ -8,25 +8,28 @@ node {
 
       // checkout scm
       stage('Checkout'){
-      echo "$WORKSPACE"
-      // zip zipFile: 'zipFile.zip', dir: '/home/dev/artifacts/'
-      
+        // zip zipFile: 'zipFile.zip', dir: '/home/dev/artifacts/'
+        
 
-      // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
-      // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
-      // archiveArtifacts artifacts: 'test.zip', fingerprint: true
-      // zip dir: "$WORKSPACE", zipFile: "$WORKSPACE/artifacts/Reports_Build_${BUILD_NUMBER}.zip", archive: true
+        // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
+        // zip zipFile: 'test.zip', archive: true, dir: '/home/dev/artifacts'
+        // archiveArtifacts artifacts: 'test.zip', fingerprint: true
+        // zip dir: "$WORKSPACE", zipFile: "$WORKSPACE/artifacts/Reports_Build_${BUILD_NUMBER}.zip", archive: true
 
-      zip zipFile: '$WORKSPACE/output.zip', dir: '', glob: '', archive: true, overwrite: true
-      zip zipFile: '/home/dev/output.zip', dir: '', glob: '', archive: true, overwrite: true
+        steps {
+          echo "$WORKSPACE"
+          zip zipFile: "$WORKSPACE/output.zip", dir: '', glob: '', archive: true, overwrite: true
+          archiveArtifacts artifacts: 'output.zip', fingerprint: true
+          zip zipFile: '/home/dev/output.zip', dir: '', glob: '', archive: true, overwrite: true
+          archiveArtifacts artifacts: 'output.zip', fingerprint: true
+        }
+        // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
+        // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
 
-      // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
-      // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
-
-      // fileOperations([fileCopyOperation(excludes: '',
-      //                             flattenFiles: false,
-      //                             includes: "$WORKSPACE/**",
-      //                             targetLocation: '/home/dev/artifacts/')])
+        // fileOperations([fileCopyOperation(excludes: '',
+        //                             flattenFiles: false,
+        //                             includes: "$WORKSPACE/**",
+        //                             targetLocation: '/home/dev/artifacts/')])
       }
 
       stage('Test'){
