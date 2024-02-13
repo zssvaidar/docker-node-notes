@@ -36,7 +36,7 @@ node {
 
           def values = "$JOB_NAME".tokenize( '/' )
           def BUILD_NAME = values[0]
-          echo "Artifact path: $JENKINS_HOME/jobs/$BUILD_NAME/branches/${BRANCH_NAME}"
+          echo "Artifact path: $JENKINS_HOME/jobs/$BUILD_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}"
 
           // zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
 
