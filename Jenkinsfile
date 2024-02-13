@@ -18,14 +18,7 @@ node {
 
         // steps {
           echo "$WORKSPACE"
-          // zip file: "**/*", archive: true, dir: "$WORKSPACE", glob: '', zipFile: 'nameOfFile.zip'
-          zip zipFile: 'screen', archive: true, glob: '**/*'
-          archiveArtifacts (artifacts: '**/*')
-
-          // zip zipFile: "${WORKSPACE}/build/output.zip", dir: "$WORKSPACE/", glob: '', overwrite: true
-
-          // zip zipFile: "output.zip", dir: '', glob: '', archive: true, overwrite: true
-          // zip zipFile: '/home/dev/output2.zip', dir: '', glob: '', archive: true, overwrite: true
+          zip zipFile: 'build.zip', archive: true, glob: '**/*'
         // }
         // zip zipFile: 'test.zip', archive: false, dir: "$WORKSPACE"
         // archiveArtifacts artifacts: "$WORKSPACE/test.zip", fingerprint: true
