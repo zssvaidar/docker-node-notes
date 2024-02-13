@@ -29,21 +29,15 @@ node {
           echo "Workspace: $WORKSPACE"
           echo "Artifact: ${artifact_name}.zip"
           echo "JENKINS_HOME: $JENKINS_HOME"
-          echo "Artifact path: $JENKINS_HOME/jobs/$JOB_NAME"
 
-          echo "JOB_DISPLAY_URL: $JOB_DISPLAY_URL"
-          echo "JOB_NAME: $JOB_NAME"
-          echo "JOB_BASE_NAME: $JOB_BASE_NAME"
+          // echo "JOB_DISPLAY_URL: $JOB_DISPLAY_URL"
+          // echo "JOB_NAME: $JOB_NAME"
+          // echo "JOB_BASE_NAME: $JOB_BASE_NAME"
 
           def values = "$JOB_NAME".tokenize( '/' )
-          echo "${values[0]}"
+          def BUILD_NAME = values[0]
+          echo "Artifact path: $JENKINS_HOME/jobs/$BUILD_NAME/branches/${BRANCH_NAME}"
 
-          echo "${currentBuild.fullProjectName}"
-          echo "${currentBuild.displayName}"
-          echo "${currentBuild.projectName}"
-          echo "${currentBuild.fullProjectName}"
-          echo "${currentBuild.rawBuild.project.displayName}"
-          echo "${currentBuild.rawBuild.project.parent.displayName}"
           // zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
 
 
