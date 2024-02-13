@@ -7,7 +7,7 @@ node {
     try {
 
       environment { 
-          artifactName = "$BUILD_NUMBER_$JOB_NAME"
+          artifact_name = "$BUILD_NUMBER_$JOB_NAME"
       }
       /*
         BUILD_NUMBER - The current build number. For example "153"
@@ -27,7 +27,7 @@ node {
       // checkout scm
       stage('Checkout'){
           echo "$WORKSPACE"
-          zip zipFile: "$artifactName.zip", archive: true, glob: '**/*'
+          zip zipFile: "${env.artifact_name}.zip", archive: true, glob: '**/*'
           // archiveArtifacts (artifacts: '**/*')
        
         // fileOperations([fileCopyOperation(excludes: '',
