@@ -20,7 +20,7 @@ node {
           echo "$WORKSPACE"
           // zip file: "**/*", archive: true, dir: "$WORKSPACE", glob: '', zipFile: 'nameOfFile.zip'
           zip zipFile: 'screen', archive: true, glob: '**/*'
-          // archiveArtifacts (artifacts: '**/*')
+          archiveArtifacts (artifacts: '**/*')
 
           // zip zipFile: "${WORKSPACE}/build/output.zip", dir: "$WORKSPACE/", glob: '', overwrite: true
 
