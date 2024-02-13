@@ -38,6 +38,8 @@ node {
           echo "${currentBuild.displayName}"
           echo "${currentBuild.projectName}"
           echo "${currentBuild.fullProjectName}"
+          echo "${currentBuild.rawBuild.project.displayName}"
+          echo "${currentBuild.rawBuild.project.parent.displayName}"
           // zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
 
 
