@@ -29,7 +29,9 @@ node {
           echo "Workspace: $WORKSPACE"
           echo "Artifact: ${artifact_name}.zip"
           echo "JENKINS_HOME: $JENKINS_HOME"
-          echo "Artifact path: $JENKINS_HOME/jobs/"
+          echo "Artifact path: $JENKINS_HOME/jobs/$JOB_NAME"
+
+          echo "JOB_DISPLAY_URL: $JOB_DISPLAY_URL"
           echo "JOB_NAME: $JOB_NAME"
           echo "JOB_BASE_NAME: $JOB_BASE_NAME"
           zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
