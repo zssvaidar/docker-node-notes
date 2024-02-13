@@ -7,8 +7,8 @@ node {
     try {
 
       environment { 
-          ARTIFACT_NAME = "$BUILD_NUMBER_$JOB_NAME"
-          artifact1 = "$BUILD_NUMBER"
+          ARTIFACT_NAME = "${BUILD_NUMBER}_$JOB_NAME"
+          artifact1 = $BUILD_NUMBER
       }
       /*
         BUILD_NUMBER - The current build number. For example "153"
