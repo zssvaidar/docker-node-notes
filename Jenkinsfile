@@ -7,10 +7,7 @@ node {
     try {
 
       artifact_name = "${BUILD_NUMBER}_$JOB_NAME"
-      environment { 
-          ARTIFACT_NAME = "${BUILD_NUMBER}_$JOB_NAME"
-          artifact1 = $BUILD_NUMBER
-      }
+
       /*
         BUILD_NUMBER - The current build number. For example "153"
         BUILD_ID - The current build id. For example "2018-08-22_23-59-59"
@@ -28,10 +25,12 @@ node {
       */
       // checkout scm
       stage('Checkout'){
-          echo "${env.ARTIFACT_NAME}"
-          echo "$artifact_name"
-          // echo "$WORKSPACE"
-          // zip zipFile: "${env.ARTIFACT_NAME}.zip", archive: true, glob: '**/*'
+
+          echo "Workspace: $WORKSPACE"
+          echo "Artifact: $artifact_name.zip"
+          echo "JENKINS_HOME: $JENKINS_HOME"
+          // echo "Artifact path: $JENKINS_HOME"
+          zip zipFile: "$artifact_name.zip", archive: true, glob: '**/*'
 
 
           // archiveArtifacts (artifacts: '**/*')
