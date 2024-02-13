@@ -41,7 +41,7 @@ node {
 
       stage('Deploy'){
         ansiblePlaybook installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/playbook.yml', vaultTmpPath: '',
-            extras: "-e SOME_TAG=123213 -e user=cicd -e artifact_fullpath=$ARTIFACT_FULL_PATH -e dest_path=/home/dev/artifacts/"
+            extras: "-e SOME_TAG=123213 -e user=cicd -e artifactfullpath=$ARTIFACT_FULL_PATH -e destpath=/home/dev/artifacts/"
       }
 
       stage('Test'){
