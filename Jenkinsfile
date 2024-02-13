@@ -34,6 +34,7 @@ node {
           echo "JOB_DISPLAY_URL: $JOB_DISPLAY_URL"
           echo "JOB_NAME: $JOB_NAME"
           echo "JOB_BASE_NAME: $JOB_BASE_NAME"
+          echo "${currentBuild.rawBuild.project.parent.displayName}"
           zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
 
 
