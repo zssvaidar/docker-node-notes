@@ -27,7 +27,7 @@ node {
       stage('Checkout'){
 
           echo "Workspace: $WORKSPACE"
-          echo "Artifact: $artifact_name.zip"
+          echo "Artifact: ${artifact_name}.zip"
           echo "JENKINS_HOME: $JENKINS_HOME"
           // echo "Artifact path: $JENKINS_HOME"
           zip zipFile: "$artifact_name.zip", archive: true, glob: '**/*'
