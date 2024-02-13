@@ -6,6 +6,7 @@ node {
 
     try {
 
+      ARTIFACT_NAME = "${BUILD_NUMBER}_$JOB_NAME"
       environment { 
           ARTIFACT_NAME = "${BUILD_NUMBER}_$JOB_NAME"
           artifact1 = $BUILD_NUMBER
