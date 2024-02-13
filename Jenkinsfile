@@ -19,7 +19,7 @@ node {
         // steps {
           echo "$WORKSPACE"
           // zip file: "**/*", archive: true, dir: "$WORKSPACE", glob: '', zipFile: 'nameOfFile.zip'
-          zip zipFile: 'screen.zip' archive: true dir: 'src' glob: '**/*'
+          zip zipFile: 'screen.zip', archive: true, dir: 'src', glob: '**/*'
 
           archiveArtifacts (artifacts: '**/*')
 
