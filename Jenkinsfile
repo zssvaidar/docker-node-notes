@@ -28,7 +28,7 @@ node {
       // checkout scm
       stage('Checkout'){
           echo "${env.artifact1}"
-          echo "${env.ARTIFACT_NAME}"
+          echo "$ARTIFACT_NAME"
           // echo "$WORKSPACE"
           // zip zipFile: "${env.ARTIFACT_NAME}.zip", archive: true, glob: '**/*'
 
