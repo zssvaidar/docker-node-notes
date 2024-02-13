@@ -22,17 +22,17 @@ node {
         JOB_URL - Full URL of this job. For example http://server:port/jenkins/job/foo/
       */
       // checkout scm
+
+      def values = "$JOB_NAME".tokenize( '/' )
+      def PARENT_JOB_NAME = values[0]
+      def artifact_name = "${BUILD_NUMBER}_${PARENT_JOB_NAME}_${BRANCH_NAME}.zip"
+      def ARTIFACT_PATH = "$JENKINS_HOME/jobs/$PARENT_JOB_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive"
+      def ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
+
       stage('Checkout'){
 
           echo "JENKINS_HOME: $JENKINS_HOME"
           echo "Workspace: $WORKSPACE"
-
-          def values = "$JOB_NAME".tokenize( '/' )
-          def PARENT_JOB_NAME = values[0]
-          def artifact_name = "${BUILD_NUMBER}_${PARENT_JOB_NAME}_${BRANCH_NAME}.zip"
-          def ARTIFACT_PATH = "$JENKINS_HOME/jobs/$PARENT_JOB_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive"
-          def ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
-
           echo "Artifact path: $ARTIFACT_PATH"
           echo "Artifact fullpath: $ARTIFACT_FULL_PATH"
           zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
