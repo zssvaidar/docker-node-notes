@@ -34,6 +34,10 @@ node {
           echo "JOB_DISPLAY_URL: $JOB_DISPLAY_URL"
           echo "JOB_NAME: $JOB_NAME"
           echo "JOB_BASE_NAME: $JOB_BASE_NAME"
+
+          def values = "$JOB_NAME".tokenize( '/' )
+          echo "${values[0]}"
+
           echo "${currentBuild.fullProjectName}"
           echo "${currentBuild.displayName}"
           echo "${currentBuild.projectName}"
