@@ -24,7 +24,7 @@ node {
       // checkout scm
       stage('Checkout'){
           echo "$WORKSPACE"
-          artifact_name = $BUILD_NUMBER_$JOB_NAME
+          artifact_name = "$BUILD_NUMBER_$JOB_NAME"
           zip zipFile: "$artifact_name.zip", archive: true, glob: '**/*'
           // archiveArtifacts (artifacts: '**/*')
        
