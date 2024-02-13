@@ -6,7 +6,6 @@ node {
 
     try {
 
-
       /*
         BUILD_NUMBER - The current build number. For example "153"
         BUILD_ID - The current build id. For example "2018-08-22_23-59-59"
@@ -25,7 +24,6 @@ node {
       // checkout scm
       stage('Checkout'){
 
-
           echo "JENKINS_HOME: $JENKINS_HOME"
           echo "Workspace: $WORKSPACE"
 
@@ -39,13 +37,11 @@ node {
           echo "Artifact fullpath: $ARTIFACT_FULL_PATH"
           zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
 
+      }
 
-          // archiveArtifacts (artifacts: '**/*')
-       
-        // fileOperations([fileCopyOperation(excludes: '',
-        //                             flattenFiles: false,
-        //                             includes: "$WORKSPACE/**",
-        //                             targetLocation: '/home/dev/artifacts/')])
+      stage('Deploy'){
+        ansiblePlaybook installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/playbook.yml', vaultTmpPath: '',
+            extras: "-e SOME_TAG=123213 -e user=cicd -e artifact_fullpath=$ARTIFACT_FULL_PATH -e dest_path=/home/dev/artifacts/"
       }
 
       stage('Test'){
