@@ -30,7 +30,7 @@ node {
           echo "Artifact: ${artifact_name}.zip"
           echo "JENKINS_HOME: $JENKINS_HOME"
           // echo "Artifact path: $JENKINS_HOME"
-          zip zipFile: "$artifact_name.zip", archive: true, glob: '**/*'
+          zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
 
 
           // archiveArtifacts (artifacts: '**/*')
