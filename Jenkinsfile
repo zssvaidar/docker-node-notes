@@ -29,7 +29,9 @@ node {
       def ARTIFACT_PATH = "$JENKINS_HOME/jobs/$PARENT_JOB_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive"
       def ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
 
-      stage('Checkout'){
+      stage('Zip'){
+
+          cleanWs()
 
           echo "JENKINS_HOME: $JENKINS_HOME"
           echo "Workspace: $WORKSPACE"
