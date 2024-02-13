@@ -6,7 +6,6 @@ node {
 
     try {
 
-      artifact_name = "${BUILD_NUMBER}_$JOB_NAME"
 
       /*
         BUILD_NUMBER - The current build number. For example "153"
@@ -26,17 +25,18 @@ node {
       // checkout scm
       stage('Checkout'){
 
-          echo "Workspace: $WORKSPACE"
-          echo "Artifact: ${artifact_name}.zip"
-          echo "JENKINS_HOME: $JENKINS_HOME"
+          def artifact_name = "${BUILD_NUMBER}_$JOB_NAME"
 
-          // echo "JOB_DISPLAY_URL: $JOB_DISPLAY_URL"
-          // echo "JOB_NAME: $JOB_NAME"
-          // echo "JOB_BASE_NAME: $JOB_BASE_NAME"
+          echo "JENKINS_HOME: $JENKINS_HOME"
+          echo "Workspace: $WORKSPACE"
 
           def values = "$JOB_NAME".tokenize( '/' )
           def BUILD_NAME = values[0]
-          echo "Artifact path: $JENKINS_HOME/jobs/$BUILD_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}"
+          def ARTIFACT_PATH = "$JENKINS_HOME/jobs/$BUILD_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive/"
+          def ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
+
+          echo "Artifact path: $ARTIFACT_PATH"
+          echo "Artifact fullpath: $ARTIFACT_FULL_PATH"
 
           // zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
 
