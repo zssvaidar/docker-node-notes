@@ -6,6 +6,9 @@ node {
 
     try {
 
+      environment { 
+          artifact_name = "$BUILD_NUMBER_$JOB_NAME"
+      }
       /*
         BUILD_NUMBER - The current build number. For example "153"
         BUILD_ID - The current build id. For example "2018-08-22_23-59-59"
@@ -24,7 +27,6 @@ node {
       // checkout scm
       stage('Checkout'){
           echo "$WORKSPACE"
-          artifact_name = "${BUILD_NUMBER}_${JOB_NAME}"
           zip zipFile: "$artifact_name.zip", archive: true, glob: '**/*'
           // archiveArtifacts (artifacts: '**/*')
        
