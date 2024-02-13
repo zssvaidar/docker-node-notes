@@ -31,7 +31,7 @@ node {
 
           def values = "$JOB_NAME".tokenize( '/' )
           def BUILD_NAME = values[0]
-          def artifact_name = "${BUILD_NUMBER}_${BUILD_NAME}_$BRANCH_NAME.zip"
+          def artifact_name = "${BUILD_NUMBER}_${BUILD_NAME}_${BRANCH_NAME}.zip"
           def ARTIFACT_PATH = "$JENKINS_HOME/jobs/$BUILD_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive"
           def ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
 
