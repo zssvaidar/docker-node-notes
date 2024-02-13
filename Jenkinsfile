@@ -35,7 +35,10 @@ node {
           echo "JOB_NAME: $JOB_NAME"
           echo "JOB_BASE_NAME: $JOB_BASE_NAME"
           echo "${currentBuild.fullProjectName}"
-          zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
+          echo "${currentBuild.displayName}"
+          echo "${currentBuild.projectName}"
+          echo "${currentBuild.fullProjectName}"
+          // zip zipFile: "${artifact_name}.zip", archive: true, glob: '**/*'
 
 
           // archiveArtifacts (artifacts: '**/*')
