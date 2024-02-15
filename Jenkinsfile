@@ -6,8 +6,9 @@ node {
 
     try {
 
-       stage('Checkout'){
+       stage('Cleanup'){
 
+          cleanWs()
           // checkout scm
        }
 
@@ -47,14 +48,17 @@ node {
 
         withCredentials([string(credentialsId: 'github-creds', variable: 'CREDS')]) {
 
+        echo "WORKSPACE: $WORKSPACE"
+        dir('ansible') {
+            echo "https://github.com/zssvaidar/deploy-second-ansible.git"
+            git branch: 'deploy-second', url: "https://github.com/zssvaidar/deploy-second-ansible.git"
+        }
 
-    dir('a-child-repo') {
-          echo "https://github.com/zssvaidar/deploy-second-ansible.git"
-          git branch: 'deploy-second', url: "https://github.com/zssvaidar/deploy-second-ansible.git"
-    }
-          // sh 'echo "$PWD"'
-          // sh 'ls'
-          // echo 'dockerBuild.sh'
+        // ansiblePlaybook installation: 'ansible', inventory: "${WORKSPACE}/ansible/hosts",\
+        //     playbook: '${WORKSPACE}/ansible/playbook.yml', vaultTmpPath: '',\
+        //     extras: "-e SOME_TAG=123213 -e user=cicd -e artifact_fullpath=$ARTIFACT_FULL_PATH -e dest_path=/home/ansible/artifacts/\
+        //              -e ansible_become_password=123412"
+
         }
 
       }
