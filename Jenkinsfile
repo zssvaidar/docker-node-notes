@@ -56,6 +56,7 @@ node {
           withCredentials([file(credentialsId: 'ENV_JARVIS', variable: 'envs'), ]) {
 
             ansiblePlaybook installation: 'ansible', inventory: "${WORKSPACE}/ansible/hosts",\
+                limit: 'c1',\
                 playbook: '${WORKSPACE}/ansible/playbook.yml', vaultTmpPath: '',\
                 extras: "\
                         -e ansible_become_password=123412\
