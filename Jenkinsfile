@@ -9,7 +9,7 @@ node {
        stage('Cleanup'){
 
           cleanWs()
-          // checkout scm
+          checkout scm
        }
 
       stage('Test'){
