@@ -46,7 +46,6 @@ node {
 
 
         withCredentials([string(credentialsId: 'github-creds', variable: 'CREDS')]) {
-        }
 
 
           echo "https://${CREDS}@github.com/zssvaidar/deploy-second-ansible.git"
@@ -55,6 +54,8 @@ node {
           sh 'echo "$PWD"'
           sh 'ls'
           echo 'dockerBuild.sh'
+        }
+
       }
 
       stage('Deploy'){
