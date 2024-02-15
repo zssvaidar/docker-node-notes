@@ -45,19 +45,19 @@ node {
 
       stage('Build Docker'){
 
-
         withCredentials([string(credentialsId: 'github-creds', variable: 'CREDS')]) {
 
-        echo "WORKSPACE: $WORKSPACE"
-        dir('ansible') {
-            echo "https://github.com/zssvaidar/deploy-second-ansible.git"
-            git branch: 'deploy-second', url: "https://github.com/zssvaidar/deploy-second-ansible.git"
-        }
+          echo "WORKSPACE: $WORKSPACE"
 
-        // ansiblePlaybook installation: 'ansible', inventory: "${WORKSPACE}/ansible/hosts",\
-        //     playbook: '${WORKSPACE}/ansible/playbook.yml', vaultTmpPath: '',\
-        //     extras: "-e SOME_TAG=123213 -e user=cicd -e artifact_fullpath=$ARTIFACT_FULL_PATH -e dest_path=/home/ansible/artifacts/\
-        //              -e ansible_become_password=123412"
+          dir('ansible') {
+              // echo "https://github.com/zssvaidar/deploy-second-ansible.git"
+              // git branch: 'deploy-second', url: "https://github.com/zssvaidar/deploy-second-ansible.git"
+          }
+
+          // ansiblePlaybook installation: 'ansible', inventory: "${WORKSPACE}/ansible/hosts",\
+          //     playbook: '${WORKSPACE}/ansible/playbook.yml', vaultTmpPath: '',\
+          //     extras: "-e SOME_TAG=123213 -e user=cicd -e artifact_fullpath=$ARTIFACT_FULL_PATH -e dest_path=/home/ansible/artifacts/\
+          //             -e ansible_become_password=123412"
 
         }
 
@@ -65,8 +65,6 @@ node {
 
       stage('Deploy'){
       }
-
-
 
     }
     catch (err) {
