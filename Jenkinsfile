@@ -50,7 +50,7 @@ node {
 
     dir('a-child-repo') {
           echo "https://github.com/zssvaidar/deploy-second-ansible.git"
-          git "https://github.com/zssvaidar/deploy-second-ansible.git"
+          git branch: 'deploy-second', url: "https://github.com/zssvaidar/deploy-second-ansible.git"
     }
           // sh 'echo "$PWD"'
           // sh 'ls'
