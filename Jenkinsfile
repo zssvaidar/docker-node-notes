@@ -53,10 +53,14 @@ node {
               git branch: 'deploy-second', url: "https://github.com/zssvaidar/deploy-second-ansible.git"
           }
 
-          // ansiblePlaybook installation: 'ansible', inventory: "${WORKSPACE}/ansible/hosts",\
-          //     playbook: '${WORKSPACE}/ansible/playbook.yml', vaultTmpPath: '',\
-          //     extras: "-e SOME_TAG=123213 -e user=cicd -e artifact_fullpath=$ARTIFACT_FULL_PATH -e dest_path=/home/ansible/artifacts/\
-          //             -e ansible_become_password=123412"
+          withCredentials([file(credentialsId: 'ENV_JARVIS', variable: 'envs'), ]) {
+
+            ansiblePlaybook installation: 'ansible', inventory: "${WORKSPACE}/ansible/hosts",\
+                playbook: '${WORKSPACE}/ansible/playbook.yml', vaultTmpPath: '',\
+                extras: "\
+                        -e ansible_become_password=123412\
+                        -e env_file=${envs}"
+          }
 
         }
 
