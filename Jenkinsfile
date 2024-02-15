@@ -49,11 +49,11 @@ node {
 
 
           echo "https://${CREDS}@github.com/zssvaidar/deploy-second-ansible.git"
-          git "https://${CREDS}@github.com/zssvaidar/deploy-second-ansible.git"
+          // git "https://${CREDS}@github.com/zssvaidar/deploy-second-ansible.git"
 
-          sh 'echo "$PWD"'
-          sh 'ls'
-          echo 'dockerBuild.sh'
+          // sh 'echo "$PWD"'
+          // sh 'ls'
+          // echo 'dockerBuild.sh'
         }
 
       }
