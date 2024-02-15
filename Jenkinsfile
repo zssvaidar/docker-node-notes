@@ -44,7 +44,13 @@ node {
 
       stage('Build Docker'){
 
-          git 'https://github.com/zssvaidar/deploy-second-ansible.git'
+
+        withCredentials([string(credentialsId: 'github-creds', variable: 'CREDS')]) {
+        }
+
+
+          echo "https://${CREDS}@github.com/zssvaidar/deploy-second-ansible.git"
+          git "https://${CREDS}@github.com/zssvaidar/deploy-second-ansible.git"
 
           sh 'echo "$PWD"'
           sh 'ls'
