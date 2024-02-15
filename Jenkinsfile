@@ -61,7 +61,7 @@ node {
                 extras: "\
                         -e dest_path=/home/ansible/env_file/\
                         -e ansible_become_password=123412\
-                        -e env_file=${envs}"
+                        -e env_file=\${envs}"
           }
 
         }
