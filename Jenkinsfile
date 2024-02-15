@@ -48,9 +48,10 @@ node {
         withCredentials([string(credentialsId: 'github-creds', variable: 'CREDS')]) {
 
 
+    dir('a-child-repo') {
           echo "https://github.com/zssvaidar/deploy-second-ansible.git"
           git "https://github.com/zssvaidar/deploy-second-ansible.git"
-
+    }
           // sh 'echo "$PWD"'
           // sh 'ls'
           // echo 'dockerBuild.sh'
