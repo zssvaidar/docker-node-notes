@@ -7,7 +7,6 @@ node {
     try {
 
        stage('Cleanup'){
-
           cleanWs()
           checkout scm
        }
@@ -50,8 +49,8 @@ node {
           echo "WORKSPACE: $WORKSPACE"
 
           dir('ansible') {
-              // echo "https://github.com/zssvaidar/deploy-second-ansible.git"
-              // git branch: 'deploy-second', url: "https://github.com/zssvaidar/deploy-second-ansible.git"
+              echo "https://github.com/zssvaidar/deploy-second-ansible.git"
+              git branch: 'deploy-second', url: "https://github.com/zssvaidar/deploy-second-ansible.git"
           }
 
           // ansiblePlaybook installation: 'ansible', inventory: "${WORKSPACE}/ansible/hosts",\
