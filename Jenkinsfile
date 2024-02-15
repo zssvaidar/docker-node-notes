@@ -42,33 +42,17 @@ node {
 
       }
 
-       stage('Build Docker'){
+      stage('Build Docker'){
 
-            echo 'dockerBuild.sh'
-       }
+          git 'https://github.com/zssvaidar/deploy-second-ansible.git'
 
-       stage('Deploy'){
+          sh 'echo "$PWD"'
+          sh 'ls'
+          echo 'dockerBuild.sh'
+      }
 
-         echo 'Push to Repo'
-        //  sh './dockerPushToRepo.sh'
-
-         echo 'ssh to web server and tell it to pull new image'
-        //  sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
-
-       }
-
-       stage('Cleanup'){
-
-         echo 'prune and cleanup'
-        //  sh 'npm prune'
-        //  sh 'rm node_modules -rf'
-
-        //  mail body: 'project build successful',
-        //              from: 'xxxx@yyyyy.com',
-        //              replyTo: 'xxxx@yyyy.com',
-        //              subject: 'project build successful',
-        //              to: 'yyyyy@yyyy.com'
-       }
+      stage('Deploy'){
+      }
 
 
 
