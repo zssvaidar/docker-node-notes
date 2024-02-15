@@ -59,6 +59,7 @@ node {
                 limit: 'c1',\
                 playbook: '${WORKSPACE}/ansible/playbook.yml', vaultTmpPath: '',\
                 extras: "\
+                        -e dest_path=/home/ansible/env_file/\
                         -e ansible_become_password=123412\
                         -e env_file=${envs}"
           }
