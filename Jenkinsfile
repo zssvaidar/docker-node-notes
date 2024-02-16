@@ -77,8 +77,8 @@ node {
       }
 
       stage('Deploy'){
-        // dest_artifacts_path = "/home/ansible/artifacts"
-        // dest_env_path = "/home/ansible/env_file/file.der"
+        dest_artifacts_path = "/home/ansible/artifacts"
+        dest_env_path = "/home/ansible/env_file/file.der"
 
         withCredentials([file(credentialsId: 'ENV_JARVIS', variable: 'envs'), ]) {
 
