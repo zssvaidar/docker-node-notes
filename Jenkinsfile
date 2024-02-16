@@ -53,7 +53,7 @@ node {
         echo "CURRENT_COMMIT: ${env.CURRENT_COMMIT}"
         echo "LAST_COMMIT: ${env.LAST_COMMIT}"
         
-        if(env.CURRENT_COMMIT !== env.LAST_COMMIT)
+        if(env.CURRENT_COMMIT != env.LAST_COMMIT)
           env.ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
 
         def artifact_name = "${BUILD_NUMBER}_${PARENT_JOB_NAME}_${BRANCH_NAME}_${env.CURRENT_COMMIT}.zip"
