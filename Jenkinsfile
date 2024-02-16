@@ -67,6 +67,7 @@ node {
           sleep time: 250, unit: 'MILLISECONDS'
           archiveArtifacts artifacts: "**/*.zip", fingerprint: false
 
+
           // zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
           // archiveArtifacts artifacts: "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
           // archiveArtifacts artifacts: "**/*", fingerprint: false
