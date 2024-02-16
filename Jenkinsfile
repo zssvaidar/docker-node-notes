@@ -16,7 +16,7 @@ node {
             echo "$lastBuildResult"
           }
 
-          def cause = currentBuild.getBuildCauses().get(0).getUpstreamBuild()
+          def cause = currentBuild.getBuildCauses().get(0).getUpstreamBuilds()
           echo "$cause"
           // upstreamCause.properties.each{ println "$it.key->$it.value" }
           // echo ""
