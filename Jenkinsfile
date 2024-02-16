@@ -62,7 +62,6 @@ node {
         }
         else {
           env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
-          echo "12312321 ${env.ARTIFACT_FULL_PATH}"
           zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
         }
         echo "ARTIFACT_FULL_PATH: ${env.ARTIFACT_FULL_PATH}"
