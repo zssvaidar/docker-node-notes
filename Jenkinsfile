@@ -11,7 +11,7 @@ node {
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
         def build = currentBuild.previousBuild
-        eco "$build"
+        echo "$build"
           // def r = currentBuild.getCauses().get(0).getUpstreamBuild().getEnvVars().get("BRANCH_NAME", "")
           // echo "${r}"
       }

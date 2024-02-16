@@ -3,4 +3,65 @@ npm build
 npx ts-node src/app.ts
 tsc
 
+
+found among steps [ArtifactoryGradleBuild, MavenDescriptorStep, addInteractivePromotion, ansibleAdhoc, ansiblePlaybook, ansibleVault, archive,
+artifactoryBuildTrigger, artifactoryDistributeBuild, artifactoryDownload, artifactoryEditProps, artifactoryGoPublish, artifactoryGoRun,
+artifactoryMavenBuild, artifactoryNpmCi, artifactoryNpmInstall, artifactoryNpmPublish, artifactoryNugetRun, artifactoryPipRun,
+artifactoryPromoteBuild, artifactoryUpload, bat, build, buildAppend, catchError, checkout, collectEnv, collectIssues, compareVersions,
+conanAddRemote, conanAddUser, createDockerBuildStep, createReleaseBundle, deleteDir, deleteReleaseBundle, deployArtifacts, dir,
+distributeReleaseBundle, dockerPullStep, dockerPushStep, dsCreateReleaseBundle, dsDeleteReleaseBundle, dsDistributeReleaseBundle,
+dsSignReleaseBundle, dsUpdateReleaseBundle, echo, emailext, emailextrecipients, envVarsForTool, error, fileExists, findBuildScans,
+findFiles, getArtifactoryServer, getContext, getJFrogPlatformInstance, git, initConanClient, input, isUnix, jfPipelines, jfrogInstance,
+junit, library, libraryResource, load, mail, milestone, newArtifactoryServer, newBuildInfo, newGoBuild, newGradleBuild, newJFrogPlatformInstance,
+newMavenBuild, newNpmBuild, newNugetBuild, newPipBuild, node, nodesByLabel, parallel, powershell, prependToFile, properties, publishBuildInfo,
+publishChecks, pwd, pwsh, readCSV, readFile, readJSON, readManifest, readMavenPom, readProperties, readTrusted, readYaml, resolveScm, retry,
+rtAddInteractivePromotion, rtBuildAppend, rtBuildInfo, rtBuildTrigger, rtCollectIssues, rtConanClient, rtConanRemote, rtConanRun,
+rtCreateDockerBuild, rtDeleteProps, rtDockerPull, rtDockerPush, rtDotnetResolver, rtDotnetRun, rtDownload, rtGoDeployer, rtGoPublish,
+rtGoResolver, rtGoRun, rtGradleDeployer, rtGradleResolver, rtGradleRun, rtMavenDeployer, rtMavenResolver, rtMavenRun, rtNpmCi,
+rtNpmDeployer, rtNpmInstall, rtNpmPublish, rtNpmResolver, rtNugetResolver, rtNugetRun, rtPipInstall, rtPipResolver, rtPromote,
+rtPublishBuildInfo, rtServer, rtSetProps, rtUpload, runConanCommand, script, sh, sha1, sha256, signReleaseBundle, sleep, stage,
+stash, step, tar, tee, timeout, timestamps, tm, tool, touch, unarchive, unstable, unstash, untar, unzip, updateReleaseBundle,
+validateDeclarativePipeline, verifySha1, verifySha256, waitForBuild, waitUntil, warnError, withChecks, withContext, withCredentials,
+withEnv, withGradle, wrap, writeCSV, writeFile, writeJSON, writeMavenPom, writeYaml, ws, xrayScan, xrayScanBuild, zip]
+
+
+or symbols [GitUsernamePassword, agent, all, allBranchesSame, allOf, always, ansible, ant, antFromApache, antOutcome,
+antTarget, any, anyOf, apiToken, apiTokenProperty, architecture, archiveArtifacts, artifactManager, assembla, authorInChangelog,
+authorizationMatrix, batchFile, bitbucket, bitbucketServer, booleanParam, branch, brokenBuildSuspects, brokenTestsSuspects,
+browser, buildButton, buildDiscarder, buildDiscarders, buildRetention, buildSingleRevisionOnly, buildUser, buildingTag, builtInNode,
+caseInsensitive, caseSensitive, certificate, cgit, changeRequest, changelog, changelogBase, changelogToBranch, changeset,
+checkoutOption, checkoutToSubdirectory, choice, choiceParam, cleanAfterCheckout, cleanBeforeCheckout, cleanWs, clock, cloneOption,
+command, configFile, configFileProvider, contributor, credentials, cron, crumb, culprits, defaultDisplayUrlProvider,
+defaultFolderConfiguration, defaultView, demand, developers, disableConcurrentBuilds, disableRestartFromStage, disableResume,
+discoverOtherRefs, discoverOtherRefsTrait, downstream, dumb, durabilityHint, email-ext, envVars, envVarsFilter, environment,
+equals, experimentalFlags, expression, extendedEmailPublisher, file, fileCopyOperation, fileCreateOperation, fileDeleteOperation,
+fileDownloadOperation, fileJoinOperation, fileOperations, fileParam, filePath, filePropertiesToJsonOperation, fileRenameOperation,
+fileTransformOperation, fileUnTarOperation, fileUnZipOperation, fileZipOperation, fingerprint, fingerprints, fisheye, folderConfigFiles,
+folderCopyOperation, folderCreateOperation, folderDeleteOperation, folderRenameOperation, frameOptions, freeStyle, freeStyleJob, fromScm,
+fromSource, git, gitBranchDiscovery, gitHooks, gitHubBranchDiscovery, gitHubBranchHeadAuthority, gitHubExcludeArchivedRepositories,
+gitHubExcludeForkedRepositories, gitHubExcludePrivateRepositories, gitHubExcludePublicRepositories, gitHubForkDiscovery,
+gitHubIgnoreDraftPullRequestFilter, gitHubPullRequestDiscovery, gitHubSshCheckout, gitHubTagDiscovery, gitHubTopicsFilter,
+gitHubTrustContributors, gitHubTrustEveryone, gitHubTrustNobody, gitHubTrustPermissions, gitLab, gitList, gitSCM, gitTagDiscovery,
+gitTool, gitUsernamePassword, gitWeb, gitblit, github, githubProjectProperty, githubPush, gitiles, globalConfigFiles, gogs, gradle,
+group, headRegexFilter, headWildcardFilter, hyperlink, hyperlinkToModels, ignoreOnPush, inbound, inheriting, inheritingGlobal,
+installSource, isRestartedRun, javadoc, jdk, jgit, jgitapache, jnlp, jobBuildDiscarder, jobName, junitTestResultStorage, kiln,
+label, lastDuration, lastFailure, lastGrantedAuthorities, lastStable, lastSuccess, legacy, legacySCM, lfs, list, local, localBranch,
+localBranchTrait, locale, location, logRotator, loggedInUsersCanDoAnything, mailer, masterBuild, maven, maven3Mojos, mavenErrors,
+mavenGlobalConfig, mavenMojos, mavenWarnings, modernSCM, multiBranchProjectDisplayNaming, multibranch, myView, namedBranchesDifferent,
+node, nodeProperties, nonInheriting, none, nonresumable, not, organizationFolder, overrideIndexTriggers, paneStatus, parallelsAlwaysFailFast,
+parameters, password, pattern, perBuildTag, permanent, phabricator, pipeline, pipelineTriggers, plainText, plugin, pollSCM, preserveStashes,
+previous, projectNamingStrategy, proxy, pruneStaleBranch, pruneStaleTag, pruneTags, queueItemAuthenticator, quietPeriod, rateLimit,
+rateLimitBuilds, recipients, redmine, refSpecs, remoteName, requestor, resourceRoot, retainOnlyVariables, rhodeCode, run, runParam,
+sSHLauncher, schedule, scmGit, scmRetryCount, scriptApproval, scriptApprovalLink, search, security, shell, simpleBuildDiscarder,
+skipDefaultCheckout, skipStagesAfterUnstable, slave, sourceRegexFilter, sourceWildcardFilter, sparseCheckoutPaths, ssh, sshPublicKey,
+sshUserPrivateKey, standard, status, string, stringParam, submodule, submoduleOption, suppressAutomaticTriggering, suppressFolderAutomaticTriggering,
+swapSpace, tag, teamFoundation, teamSlugFilter, text, textParam, timestamper, timestamperConfig, timezone, tmpSpace, toolLocation,
+triggeredBy, unsecured, untrusted, upstream, upstreamDevelopers, user, userIdentity, userOrGroup, userSeed, usernameColonPassword,
+usernamePassword, viewgit, viewsTabBar, weather, withAnt, zip]
+
+
+or globals [Artifactory, JFrog, currentBuild, env, params, pipeline, scm]
+
+
 git add . && git commit -m "." && git push origin deploy-first
+
