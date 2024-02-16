@@ -58,7 +58,7 @@ node {
           env.ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
 
         // if(env.CURRENT_COMMIT != env.LAST_COMMIT)
-          zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
+          zip zipFile: "$JENKINS_HOME/artifacts/${artifact_name}", archive: true, glob: '**/*'
 
       }
 
