@@ -64,7 +64,7 @@ node {
           env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
           zip zipFile: env.ARTIFACT_FULL_PATH, archive: false, glob: '**/*'
           // archiveArtifacts artifacts: "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
-          archiveArtifacts artifacts: env.ARTIFACT_FULL_PATH
+          archiveArtifacts artifacts: "${artifact_name}"
         }
         echo "ARTIFACT_FULL_PATH: ${env.ARTIFACT_FULL_PATH}"
 
