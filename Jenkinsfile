@@ -10,8 +10,10 @@ node {
           def scmVars = checkout scm
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
-          def r = currentBuild.getCauses().get(0).getUpstreamBuild().getEnvVars().get("BRANCH_NAME", "")
-          echo "${r}"
+        def build = currentBuild.previousBuild
+        println build.dump()
+          // def r = currentBuild.getCauses().get(0).getUpstreamBuild().getEnvVars().get("BRANCH_NAME", "")
+          // echo "${r}"
       }
 
       stage('Test'){
