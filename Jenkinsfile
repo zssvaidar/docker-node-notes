@@ -10,21 +10,26 @@ node {
           def scmVars = checkout scm
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
-          def jobName = currentBuild.project.name;
-          def job = hudson.model.Hudson.instance.getItem(jobName);
-          def builds = job.getBuilds();
+            def getLastSuccessfulCommitHash() {
+              def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
+              if (lastSuccessfulBuild) {
+                  def actions = lastSuccessfulBuild.getActions()
+                  for (action in actions) {
+                      def lastBuiltRevision = action.getLastBuiltRevision()
+                      if (lastBuiltRevision) {
+                          return lastBuiltRevision.getSha1String()
+                      }
+                  }
+              }
+              return null
+            }
 
-          def successfulBuild = builds.find { build -> (currentBuild.envVars['IS_BUILD_SUCCESSFUL'] == 'YES') };
-
-          if (successfulBuild == null) {
-            return;
-          }
-          echo "$successfulBuild"
-
-          // Get git commit for successful build
-
-          def gitCommitForSuccessfulBuild =  successfulBuild.envVars['GIT_COMMIT'];
-
+            def lastCommitHash = getLastSuccessfulCommitHash()
+            if (lastCommitHash) {
+                println "Last successful build's commit hash: ${lastCommitHash}"
+            } else {
+                println "No successful builds found or no commit hash available."
+            }
        }
 
       stage('Test'){
