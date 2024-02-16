@@ -8,8 +8,7 @@ node {
        stage('Cleanup'){
           cleanWs()
           def scmVars = checkout scm
-          echo "JENKINS_HOME: ${scmVars.GIT_COMMIT}"
-
+          env.GIT_COMMIT = scmVars.GIT_COMMIT
        }
 
       stage('Test'){
@@ -44,7 +43,7 @@ node {
         echo "WORKSPACE: $WORKSPACE"
         echo "Artifact path: $ARTIFACT_PATH"
         echo "Artifact fullpath: $ARTIFACT_FULL_PATH"
-        echo "GIT_COMMIT: $GIT_COMMIT"
+        echo "GIT_COMMIT: ${env.GIT_COMMIT}"
         // zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
 /* 
         dir('ansible') {
