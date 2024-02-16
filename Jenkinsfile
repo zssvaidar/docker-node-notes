@@ -42,32 +42,31 @@ node {
       // http://ip/env-vars.html
       def values = "$JOB_NAME".tokenize( '/' )
       def PARENT_JOB_NAME = values[0]
-      def ARTIFACT_PATH = "$JENKINS_HOME/jobs/$PARENT_JOB_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive"
+      def DEFAULT_ARTIFACT_PATH = "$JENKINS_HOME/jobs/$PARENT_JOB_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive"
       def artifact_name = "${BUILD_NUMBER}_${PARENT_JOB_NAME}_${BRANCH_NAME}_${env.CURRENT_COMMIT}.zip"
-      def ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
+      def DEFAULT_ARTIFACT_FULL_PATH = "$DEFAULT_ARTIFACT_PATH/${artifact_name}"
+      // Store artifact into default folder in build
+      // zip zipFile: "$artifact_name", archive: true, glob: '**/*'
 
       stage('Build'){
         echo "JENKINS_HOME: $JENKINS_HOME"
         echo "WORKSPACE: $WORKSPACE"
-        echo "Artifact path: $ARTIFACT_PATH"
-        echo "Artifact fullpath: $ARTIFACT_FULL_PATH"
         echo "CURRENT_COMMIT: ${env.CURRENT_COMMIT}"
         echo "LAST_COMMIT: ${env.LAST_COMMIT}"
-        
+
+        // If commit is the same
+        // don't create new artifact, pass into env variables old artifact name
         if(env.CURRENT_COMMIT == env.LAST_COMMIT) {
           def build = currentBuild.getPreviousSuccessfulBuild()
           env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
         }
-        else
-          env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${artifact_name}"
-
-        // if(env.CURRENT_COMMIT != env.LAST_COMMIT)
-        try{
+        else {
+          env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${$JOB_NAME}/${artifact_name}"
+          echo "12312321 ${env.ARTIFACT_FULL_PATH}"
           zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
         }
-        catch (err) {
-          echo "${err.toString()}"
-        }
+        echo "ARTIFACT_FULL_PATH: ${env.ARTIFACT_FULL_PATH}"
+
       }
 
       stage('Deploy'){
@@ -81,7 +80,7 @@ node {
         //       limit: 'c2',\
         //       playbook: '${WORKSPACE}/ansible/playbook2.yml', vaultTmpPath: '',\
         //       extras: "\
-        //               -e artifact_fullpath=$ARTIFACT_FULL_PATH\
+        //               -e artifact_fullpath=${env.ARTIFACT_FULL_PATH}\
         //               -e dest_artifacts_path=$dest_artifacts_path\
         //               -e dest_env_path=$dest_env_path\
         //               -e ansible_become_password=123412\
