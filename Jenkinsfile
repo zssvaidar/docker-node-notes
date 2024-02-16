@@ -59,10 +59,12 @@ node {
         if(env.CURRENT_COMMIT == env.LAST_COMMIT) {
           def build = currentBuild.getPreviousSuccessfulBuild()
           env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
+          archiveArtifacts artifacts: "${env.ARTIFACT_FULL_PATH}"
         }
         else {
           env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
           zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
+          archiveArtifacts artifacts: "${env.ARTIFACT_FULL_PATH}"
         }
         echo "ARTIFACT_FULL_PATH: ${env.ARTIFACT_FULL_PATH}"
 
