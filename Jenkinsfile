@@ -1,4 +1,3 @@
-import hudson.model.*
 
 node {
 
@@ -11,12 +10,11 @@ node {
           def scmVars = checkout scm
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
-
           def jobName = currentBuild.project.name;
           def job = hudson.model.Hudson.instance.getItem(jobName);
           def builds = job.getBuilds();
 
-          def successfulBuild = builds.find { build -> (build.envVars['IS_BUILD_SUCCESSFUL'] == 'YES') };
+          def successfulBuild = builds.find { build -> (currentBuild.envVars['IS_BUILD_SUCCESSFUL'] == 'YES') };
 
           if (successfulBuild == null) {
             return;
