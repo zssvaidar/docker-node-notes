@@ -63,6 +63,7 @@ node {
         else {
           env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
           zip zipFile: "${env.ARTIFACT_FULL_PATH}", archive: true, glob: '**/*'
+          sleep time: 250, unit: 'MILLISECONDS'
           archiveArtifacts artifacts: env.ARTIFACT_FULL_PATH, fingerprint: false
 
           // zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
