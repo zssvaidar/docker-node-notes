@@ -62,9 +62,12 @@ node {
         }
         else {
           env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
+          zip zipFile: "${env.ARTIFACT_FULL_PATH}", archive: true, glob: '**/*'
+          archiveArtifacts artifacts: env.ARTIFACT_FULL_PATH, fingerprint: false
+
           // zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
           // archiveArtifacts artifacts: "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
-          archiveArtifacts artifacts: "**/*", fingerprint: false
+          // archiveArtifacts artifacts: "**/*", fingerprint: false
         }
         echo "ARTIFACT_FULL_PATH: ${env.ARTIFACT_FULL_PATH}"
 
