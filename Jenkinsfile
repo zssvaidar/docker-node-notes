@@ -9,8 +9,14 @@ node {
           def scmVars = checkout scm
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
-          def upstreamCause = currentBuild.getPreviousBuild()
-          upstreamCause.properties.each{ println "$it.key->$it.value" }
+          // def build = currentBuild.getPreviousBuild()
+          def build = currentBuild.getPreviousCompletedBuild()
+          def lastBuildResult = build.getResult()
+          if(lastBuildResult) {
+            echo "$lastBuildResult"
+          }
+          currentBuild.setResult(env.GIT_COMMIT)
+          // upstreamCause.properties.each{ println "$it.key->$it.value" }
           // echo ""
           // def r = currentBuild.getCauses().get(0).getUpstreamBuild().getEnvVars().get("BRANCH_NAME", "")
           // echo "${r}"
