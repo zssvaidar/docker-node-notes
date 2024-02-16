@@ -10,7 +10,7 @@ node {
           def scmVars = checkout scm
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
-          def lastCommitHash = getLastSuccessfulCommitHash()
+          def lastCommitHash = getLastSuccessfulCommitHash(currentBuild)
           if (lastCommitHash) {
               println "Last successful build's commit hash: ${lastCommitHash}"
           } else {
@@ -99,7 +99,7 @@ node {
 }
 
 
-def getLastSuccessfulCommitHash() {
+def getLastSuccessfulCommitHash(currentBuild) {
   def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
   if (lastSuccessfulBuild) {
       def actions = lastSuccessfulBuild.getActions()
