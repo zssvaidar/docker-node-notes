@@ -72,27 +72,27 @@ node {
           // archiveArtifacts artifacts: "**/*.zip", fingerprint: false
         }
 
+        echo "ARTIFACT_NAME: ${env.ARTIFACT_NAME}"
         echo "ARTIFACT_FULL_PATH: ${env.ARTIFACT_FULL_PATH}"
-
       }
 
       stage('Deploy'){
         // dest_artifacts_path = "/home/ansible/artifacts"
         // dest_env_path = "/home/ansible/env_file/file.der"
 
-        // withCredentials([file(credentialsId: 'ENV_JARVIS', variable: 'envs'), ]) {
+        withCredentials([file(credentialsId: 'ENV_JARVIS', variable: 'envs'), ]) {
 
-        //   ansiblePlaybook installation: 'ansible',\
-        //       inventory: "${WORKSPACE}/ansible/etc/ansible/hosts",\
-        //       limit: 'c2',\
-        //       playbook: '${WORKSPACE}/ansible/playbook2.yml', vaultTmpPath: '',\
-        //       extras: "\
-        //               -e artifact_fullpath=${env.ARTIFACT_FULL_PATH}\
-        //               -e dest_artifacts_path=$dest_artifacts_path\
-        //               -e dest_env_path=$dest_env_path\
-        //               -e ansible_become_password=123412\
-        //               -e env_file=${envs}"
-        // }
+          ansiblePlaybook installation: 'ansible',\
+              inventory: "${WORKSPACE}/ansible/etc/ansible/hosts",\
+              limit: 'c2',\
+              playbook: '${WORKSPACE}/ansible/playbook2.yml', vaultTmpPath: '',\
+              extras: "\
+                      -e artifact_fullpath=${env.ARTIFACT_FULL_PATH}\
+                      -e dest_artifacts_path=$dest_artifacts_path\
+                      -e dest_env_path=$dest_env_path\
+                      -e ansible_become_password=123412\
+                      -e env_file=${envs}"
+        }
 
       }
 
