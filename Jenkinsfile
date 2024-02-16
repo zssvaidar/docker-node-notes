@@ -12,7 +12,7 @@ node {
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
 
-          def jobName = build.project.name;
+          def jobName = currentBuild.project.name;
           def job = hudson.model.Hudson.instance.getItem(jobName);
           def builds = job.getBuilds();
 
