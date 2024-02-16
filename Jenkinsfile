@@ -30,31 +30,43 @@ node {
         //  sh 'npm test'
       }
 
+      def values = "$JOB_NAME".tokenize( '/' )
+      def PARENT_JOB_NAME = values[0]
+      def artifact_name = "${BUILD_NUMBER}_${PARENT_JOB_NAME}_${BRANCH_NAME}.zip"
+      def ARTIFACT_PATH = "$JENKINS_HOME/jobs/$PARENT_JOB_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive"
+      def ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
+
       stage('Build'){
 
+        echo "JENKINS_HOME: $JENKINS_HOME"
         echo "WORKSPACE: $WORKSPACE"
-        // withCredentials([string(credentialsId: 'github-creds', variable: 'CREDS')]) {
-        // }
+        echo "Artifact path: $ARTIFACT_PATH"
+        echo "Artifact fullpath: $ARTIFACT_FULL_PATH"
+        zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
 
         dir('ansible') {
-
           // Checkout master branch with credentials to gitlab
           git branch: 'master',
               credentialsId: 'gitlab_aidar_zharassov',
               url: 'https://gitlab.meloman.dev/aidar.zharassov/cicd-test-ansible.git'
         }
 
+        dest_artifacts_path = "/home/ansible/artifacts"
+        dest_env_path = "/home/ansible/env_file/file.der"
+
         withCredentials([file(credentialsId: 'ENV_JARVIS', variable: 'envs'), ]) {
 
-          ansiblePlaybook installation: 'ansible', inventory: "${WORKSPACE}/ansible/etc/ansible/hosts",\
+          ansiblePlaybook installation: 'ansible',\
+              inventory: "${WORKSPACE}/ansible/etc/ansible/hosts",\
               limit: 'c2',\
               playbook: '${WORKSPACE}/ansible/playbook2.yml', vaultTmpPath: '',\
               extras: "\
-                      -e dest_path=/home/ansible/env_file/file.der\
+                      -e artifact_fullpath=$ARTIFACT_FULL_PATH\
+                      -e dest_artifacts_path=$dest_artifacts_path\
+                      -e dest_env_path=$dest_env_path\
                       -e ansible_become_password=123412\
                       -e env_file=${envs}"
         }
-
 
       }
 
