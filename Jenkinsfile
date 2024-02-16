@@ -59,7 +59,8 @@ node {
         if(env.CURRENT_COMMIT == env.LAST_COMMIT) {
           def build = currentBuild.getPreviousSuccessfulBuild()
           env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
-          fingerprint "notes.txt"
+          sh "cp ${env.ARTIFACT_FULL_PATH} $WORKSPACE/"
+          fingerprint "*.zip"
         }
         else {
           env.ARTIFACT_FULL_PATH = DEFAULT_ARTIFACT_FULL_PATH
