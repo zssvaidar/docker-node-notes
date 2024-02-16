@@ -4,13 +4,13 @@ node {
 
     try {
       // https://javadoc.jenkins.io/plugin/workflow-support/org/jenkinsci/plugins/workflow/support/steps/build/RunWrapper.html
-      RunWrapper	getPreviousBuild()	 
-      RunWrapper	getPreviousBuildInProgress()	 
-      RunWrapper	getPreviousBuiltBuild()	 
-      RunWrapper	getPreviousCompletedBuild()	 
-      RunWrapper	getPreviousFailedBuild()	 
-      RunWrapper	getPreviousNotFailedBuild()	 
-      RunWrapper	getPreviousSuccessfulBuild()
+      // RunWrapper	getPreviousBuild()	 
+      // RunWrapper	getPreviousBuildInProgress()	 
+      // RunWrapper	getPreviousBuiltBuild()	 
+      // RunWrapper	getPreviousCompletedBuild()	 
+      // RunWrapper	getPreviousFailedBuild()	 
+      // RunWrapper	getPreviousNotFailedBuild()	 
+      // RunWrapper	getPreviousSuccessfulBuild()
       stage('Cleanup'){
           cleanWs()
           def scmVars = checkout scm
