@@ -59,12 +59,14 @@ node {
         if(env.CURRENT_COMMIT == env.LAST_COMMIT) {
           def build = currentBuild.getPreviousSuccessfulBuild()
           env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
+          env.ARTIFACT_NAME = build.getBuildVariables().get('ARTIFACT_NAME')
           sh "mkdir $DEFAULT_ARTIFACT_PATH"
           sh "cp ${env.ARTIFACT_FULL_PATH} $DEFAULT_ARTIFACT_PATH/"
-          // archiveArtifacts artifacts: "**/*.zip", fingerprint: false
+          env.ARTIFACT_FULL_PATH = "$DEFAULT_ARTIFACT_PATH/${env.ARTIFACT_NAME}"
         }
         else {
           env.ARTIFACT_FULL_PATH = DEFAULT_ARTIFACT_FULL_PATH
+          env.ARTIFACT_NAME = artifact_name
           zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
           // Used for archiving into remote sources
           // archiveArtifacts artifacts: "**/*.zip", fingerprint: false
