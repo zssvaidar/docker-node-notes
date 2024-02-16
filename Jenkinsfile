@@ -16,7 +16,7 @@ node {
             echo "$lastBuildResult"
           }
 
-          def cause = currentBuild.getCauses(hudson.model.Cause$UserIdCause)
+          def cause = currentBuild.getCause(hudson.model.Cause$UserIdCause)
           // [0].getUpstreamBuild().getRawBuild().getEnvVars()
           echo "$cause"
           // upstreamCause.properties.each{ println "$it.key->$it.value" }
