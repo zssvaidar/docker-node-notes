@@ -66,7 +66,7 @@ node {
           zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
         }
         catch (err) {
-          echo err
+          echo "${err.toString()}"
         }
       }
 
