@@ -1,3 +1,4 @@
+import hudson.model.*
 
 node {
 
@@ -8,10 +9,24 @@ node {
        stage('Cleanup'){
           cleanWs()
           def scmVars = checkout scm
-          def build = currentBuild.previousBuild
-          def r = commitHashForBuild(build)
-          echo "lastSuccessfulCommit: $r"
           env.GIT_COMMIT = scmVars.GIT_COMMIT
+
+
+          def jobName = build.project.name;
+          def job = hudson.model.Hudson.instance.getItem(jobName);
+          def builds = job.getBuilds();
+
+          def successfulBuild = builds.find { build -> (build.envVars['IS_BUILD_SUCCESSFUL'] == 'YES') };
+
+          if (successfulBuild == null) {
+            return;
+          }
+          echo "$successfulBuild"
+
+          // Get git commit for successful build
+
+          def gitCommitForSuccessfulBuild =  successfulBuild.envVars['GIT_COMMIT'];
+
        }
 
       stage('Test'){
@@ -92,23 +107,4 @@ node {
         throw err
     }
 
-}
-
-
-def getLastSuccessfulCommit(currentBuild) {
-  def lastSuccessfulHash = null
-  def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
-  if ( lastSuccessfulBuild ) {
-    lastSuccessfulHash = commitHashForBuild( lastSuccessfulBuild )
-  }
-  return lastSuccessfulHash
-}
-
-/**
- * Gets the commit hash from a Jenkins build object, if any
- */
-@NonCPS
-def commitHashForBuild( build ) {
-  def scmAction = build?.actions.find { action -> action instanceof jenkins.scm.api.SCMRevisionAction }
-  return scmAction?.revision?.hash
 }
