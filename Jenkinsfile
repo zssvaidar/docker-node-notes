@@ -16,7 +16,7 @@ node {
             echo "$lastBuildResult"
           }
 
-          def cause = currentBuild.getBuildVariables()
+          def cause = currentBuild.getBuildVariables().get('GIT_COMMIT')
           // [0].getUpstreamBuild().getRawBuild().getEnvVars()
           echo "$cause"
           // upstreamCause.properties.each{ println "$it.key->$it.value" }
