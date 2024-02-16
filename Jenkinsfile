@@ -65,7 +65,7 @@ node {
           // zip zipFile: "${env.ARTIFACT_FULL_PATH}", archive: true, glob: '**/*'
           zip zipFile: "$DEFAULT_ARTIFACT_FULL_PATH", archive: false, glob: '**/*'
           sleep time: 250, unit: 'MILLISECONDS'
-          archiveArtifacts artifacts: "$DEFAULT_ARTIFACT_FULL_PATH", fingerprint: false
+          archiveArtifacts artifacts: "$DEFAULT_ARTIFACT_PATH/*.zip", fingerprint: false
 
           // zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
           // archiveArtifacts artifacts: "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
