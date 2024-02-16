@@ -43,6 +43,7 @@ node {
       def values = "$JOB_NAME".tokenize( '/' )
       def PARENT_JOB_NAME = values[0]
       def ARTIFACT_PATH = "$JENKINS_HOME/jobs/$PARENT_JOB_NAME/branches/${BRANCH_NAME}/builds/${BUILD_NUMBER}/archive"
+      def artifact_name = "${BUILD_NUMBER}_${PARENT_JOB_NAME}_${BRANCH_NAME}_${env.CURRENT_COMMIT}.zip"
       def ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
 
       stage('Build'){
@@ -56,7 +57,6 @@ node {
         if(env.CURRENT_COMMIT != env.LAST_COMMIT)
           env.ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
 
-        def artifact_name = "${BUILD_NUMBER}_${PARENT_JOB_NAME}_${BRANCH_NAME}_${env.CURRENT_COMMIT}.zip"
         // if(env.CURRENT_COMMIT != env.LAST_COMMIT)
           zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
 
