@@ -77,6 +77,15 @@ node {
       }
 
       stage('Deploy'){
+
+        dir('ansible') {
+
+          // Checkout master branch with credentials to gitlab
+          git branch: 'master',
+              credentialsId: 'gitlab_aidar_zharassov',
+              url: 'https://gitlab.meloman.dev/aidar.zharassov/cicd-test-ansible.git'
+        }
+
         dest_artifacts_path = "/home/ansible/artifacts"
         dest_env_path = "/home/ansible/env_file/file.der"
 
