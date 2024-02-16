@@ -8,7 +8,7 @@ node {
        stage('Cleanup'){
           cleanWs()
           def scmVars = checkout scm
-          def lastSuccessfulCommit = getLastSuccessfulCommit()
+          def lastSuccessfulCommit = getLastSuccessfulCommit(currentBuild)
           echo "lastSuccessfulCommit: $lastSuccessfulCommit"
           env.GIT_COMMIT = scmVars.GIT_COMMIT
        }
@@ -94,7 +94,7 @@ node {
 }
 
 
-def getLastSuccessfulCommit() {
+def getLastSuccessfulCommit(currentBuild) {
   def lastSuccessfulHash = null
   def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
   if ( lastSuccessfulBuild ) {
