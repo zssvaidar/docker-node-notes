@@ -15,7 +15,9 @@ node {
           if(lastBuildResult) {
             echo "$lastBuildResult"
           }
-          // currentBuild.setResult(env.GIT_COMMIT)
+
+          def cause = currentBuild.getBuildCauses()
+          echo "$cause"
           // upstreamCause.properties.each{ println "$it.key->$it.value" }
           // echo ""
           // def r = currentBuild.getCauses().get(0).getUpstreamBuild().getEnvVars().get("BRANCH_NAME", "")
