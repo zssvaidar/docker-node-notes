@@ -10,27 +10,13 @@ node {
           def scmVars = checkout scm
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
-            def getLastSuccessfulCommitHash() {
-              def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
-              if (lastSuccessfulBuild) {
-                  def actions = lastSuccessfulBuild.getActions()
-                  for (action in actions) {
-                      def lastBuiltRevision = action.getLastBuiltRevision()
-                      if (lastBuiltRevision) {
-                          return lastBuiltRevision.getSha1String()
-                      }
-                  }
-              }
-              return null
-            }
-
-            def lastCommitHash = getLastSuccessfulCommitHash()
-            if (lastCommitHash) {
-                println "Last successful build's commit hash: ${lastCommitHash}"
-            } else {
-                println "No successful builds found or no commit hash available."
-            }
-       }
+          def lastCommitHash = getLastSuccessfulCommitHash()
+          if (lastCommitHash) {
+              println "Last successful build's commit hash: ${lastCommitHash}"
+          } else {
+              println "No successful builds found or no commit hash available."
+          }
+      }
 
       stage('Test'){
         // environment {
@@ -110,4 +96,19 @@ node {
         throw err
     }
 
+}
+
+
+def getLastSuccessfulCommitHash() {
+  def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
+  if (lastSuccessfulBuild) {
+      def actions = lastSuccessfulBuild.getActions()
+      for (action in actions) {
+          def lastBuiltRevision = action.getLastBuiltRevision()
+          if (lastBuiltRevision) {
+              return lastBuiltRevision.getSha1String()
+          }
+      }
+  }
+  return null
 }
