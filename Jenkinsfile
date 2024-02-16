@@ -7,7 +7,9 @@ node {
 
        stage('Cleanup'){
           cleanWs()
-          checkout scm
+          def scmVars = checkout scm
+          echo "JENKINS_HOME: ${scmVars.GIT_COMMIT}"
+
        }
 
       stage('Test'){
