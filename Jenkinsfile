@@ -60,7 +60,7 @@ node {
           def build = currentBuild.getPreviousSuccessfulBuild()
           env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
           sh "cp ${env.ARTIFACT_FULL_PATH} $WORKSPACE/"
-          fingerprint "*.zip"
+          archiveArtifacts artifacts: "**/*.zip", fingerprint: false
         }
         else {
           env.ARTIFACT_FULL_PATH = DEFAULT_ARTIFACT_FULL_PATH
