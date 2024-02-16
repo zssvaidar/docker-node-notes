@@ -59,8 +59,8 @@ node {
         if(env.CURRENT_COMMIT == env.LAST_COMMIT) {
           def build = currentBuild.getPreviousSuccessfulBuild()
           env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
-          sh "cp ${env.ARTIFACT_FULL_PATH} $WORKSPACE/"
-          archiveArtifacts artifacts: "**/*.zip", fingerprint: false
+          sh "cp ${env.ARTIFACT_FULL_PATH} $DEFAULT_ARTIFACT_PATH/"
+          // archiveArtifacts artifacts: "**/*.zip", fingerprint: false
         }
         else {
           env.ARTIFACT_FULL_PATH = DEFAULT_ARTIFACT_FULL_PATH
