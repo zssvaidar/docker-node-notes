@@ -78,7 +78,7 @@ node {
         //               -e dest_env_path=$dest_env_path\
         //               -e ansible_become_password=123412\
         //               -e env_file=${envs}"
-        }
+        // }
 
       }
 
