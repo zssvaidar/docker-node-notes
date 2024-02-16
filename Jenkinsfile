@@ -86,8 +86,8 @@ node {
               url: 'https://gitlab.meloman.dev/aidar.zharassov/cicd-test-ansible.git'
         }
 
-        dest_artifacts_path = "/tmp/artifacts/artifacts"
-        dest_env_path = "/tmp/env/env_file.env"
+        dest_artifact_path = "/tmp/artifacts"
+        dest_env_path = "/tmp/env"
         dest_env_variable_parse = "/var/app/env"
 
         withCredentials([file(credentialsId: 'ENV_JARVIS', variable: 'envs'), ]) {
@@ -98,7 +98,7 @@ node {
               playbook: '${WORKSPACE}/ansible/playbook2.yml', vaultTmpPath: '',\
               extras: "\
                       -e artifact_fullpath=${env.ARTIFACT_FULL_PATH}\
-                      -e dest_artifacts_path=$dest_artifacts_path\
+                      -e dest_artifact_path=$dest_artifacts_path\
                       -e dest_env_variable_parse=$dest_env_variable_parse\
                       -e dest_env_path=$dest_env_path\
                       -e ansible_become_password=123412\
