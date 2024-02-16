@@ -62,9 +62,7 @@ node {
         }
         else {
           env.ARTIFACT_FULL_PATH = DEFAULT_ARTIFACT_FULL_PATH
-          // zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
-          zip zipFile: "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}", archive: true, glob: '**/*'
-          fingerprint "$JENKINS_HOME/artifacts/**/*.zip"
+          zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
           // Used for archiving into remote sources
           // archiveArtifacts artifacts: "**/*.zip", fingerprint: false
         }
