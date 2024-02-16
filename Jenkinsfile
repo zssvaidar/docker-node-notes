@@ -68,6 +68,7 @@ node {
           // Used for archiving into remote sources
           // archiveArtifacts artifacts: "**/*.zip", fingerprint: false
         }
+
         echo "ARTIFACT_FULL_PATH: ${env.ARTIFACT_FULL_PATH}"
 
       }
