@@ -42,8 +42,9 @@ node {
         echo "WORKSPACE: $WORKSPACE"
         echo "Artifact path: $ARTIFACT_PATH"
         echo "Artifact fullpath: $ARTIFACT_FULL_PATH"
-        zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
-
+        echo "GIT_COMMIT: $GIT_COMMIT"
+        // zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
+/* 
         dir('ansible') {
           // Checkout master branch with credentials to gitlab
           git branch: 'master',
@@ -67,7 +68,7 @@ node {
                       -e ansible_become_password=123412\
                       -e env_file=${envs}"
         }
-
+ */
       }
 
       stage('Deploy'){
