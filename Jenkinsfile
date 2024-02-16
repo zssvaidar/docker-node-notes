@@ -10,7 +10,8 @@ node {
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
           def upstreamCause = currentBuild.getPreviousBuild()
-          echo "$upstreamCause"
+          upstreamCause.properties.each{ println "$it.key->$it.value" }
+          // echo ""
           // def r = currentBuild.getCauses().get(0).getUpstreamBuild().getEnvVars().get("BRANCH_NAME", "")
           // echo "${r}"
       }
