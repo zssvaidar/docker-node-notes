@@ -88,7 +88,7 @@ node {
 
         dest_artifact_path = "/tmp/artifacts"
         dest_env_path = "/tmp/env"
-        dest_env_variable_parse = "/var/app/env"
+        dest_env_variable_parse = "/var/app/env/"
 
         withCredentials([file(credentialsId: 'ENV_JARVIS', variable: 'envs'), ]) {
 
