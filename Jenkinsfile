@@ -61,7 +61,7 @@ node {
           env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
         }
         else {
-          env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${$JOB_NAME}/${artifact_name}"
+          env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
           echo "12312321 ${env.ARTIFACT_FULL_PATH}"
           zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
         }
