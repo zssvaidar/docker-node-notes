@@ -57,8 +57,8 @@ node {
           env.ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
 
         def artifact_name = "${BUILD_NUMBER}_${PARENT_JOB_NAME}_${BRANCH_NAME}_${env.CURRENT_COMMIT}.zip"
-        if(env.CURRENT_COMMIT !== env.LAST_COMMIT)
-        zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
+        // if(env.CURRENT_COMMIT != env.LAST_COMMIT)
+          zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
 
       }
 
