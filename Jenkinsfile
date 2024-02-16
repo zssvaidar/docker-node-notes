@@ -61,15 +61,10 @@ node {
           env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
         }
         else {
-          env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
-          // zip zipFile: "${env.ARTIFACT_FULL_PATH}", archive: true, glob: '**/*'
-          zip zipFile: "$DEFAULT_ARTIFACT_FULL_PATH", archive: false, glob: '**/*'
-          sleep time: 250, unit: 'MILLISECONDS'
-          archiveArtifacts artifacts: "$DEFAULT_ARTIFACT_PATH/*.zip", fingerprint: false
-
-          // zip zipFile: "${artifact_name}", archive: true, glob: '**/*'
-          // archiveArtifacts artifacts: "$JENKINS_HOME/artifacts/${JOB_NAME}/${artifact_name}"
-          // archiveArtifacts artifacts: "**/*", fingerprint: false
+          env.ARTIFACT_FULL_PATH = DEFAULT_ARTIFACT_FULL_PATH
+          zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
+          // Used for archiving into remote sources
+          // archiveArtifacts artifacts: "**/*.zip", fingerprint: false
         }
         echo "ARTIFACT_FULL_PATH: ${env.ARTIFACT_FULL_PATH}"
 
