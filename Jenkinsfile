@@ -62,8 +62,12 @@ node {
           env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${artifact_name}"
 
         // if(env.CURRENT_COMMIT != env.LAST_COMMIT)
+        try{
           zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
-
+        }
+        catch (err) {
+          echo err
+        }
       }
 
       stage('Deploy'){
