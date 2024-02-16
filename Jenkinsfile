@@ -98,7 +98,7 @@ node {
               playbook: '${WORKSPACE}/ansible/playbook2.yml', vaultTmpPath: '',\
               extras: "\
                       -e artifact_fullpath=${env.ARTIFACT_FULL_PATH}\
-                      -e dest_artifact_path=$dest_artifacts_path\
+                      -e dest_artifact_path=$dest_artifact_path\
                       -e dest_env_variable_parse=$dest_env_variable_parse\
                       -e dest_env_path=$dest_env_path\
                       -e ansible_become_password=123412\
