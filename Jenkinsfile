@@ -54,11 +54,15 @@ node {
         echo "CURRENT_COMMIT: ${env.CURRENT_COMMIT}"
         echo "LAST_COMMIT: ${env.LAST_COMMIT}"
         
-        if(env.CURRENT_COMMIT != env.LAST_COMMIT)
-          env.ARTIFACT_FULL_PATH = "$ARTIFACT_PATH/${artifact_name}"
+        if(env.CURRENT_COMMIT == env.LAST_COMMIT) {
+          def build = currentBuild.getPreviousSuccessfulBuild()
+          env.ARTIFACT_FULL_PATH = build.getBuildVariables().get('ARTIFACT_FULL_PATH')
+        }
+        else
+          env.ARTIFACT_FULL_PATH = "$JENKINS_HOME/artifacts/${artifact_name}"
 
         // if(env.CURRENT_COMMIT != env.LAST_COMMIT)
-          zip zipFile: "$JENKINS_HOME/artifacts/${artifact_name}", archive: true, glob: '**/*'
+          zip zipFile: env.ARTIFACT_FULL_PATH, archive: true, glob: '**/*'
 
       }
 
