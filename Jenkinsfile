@@ -3,22 +3,27 @@ node {
     currentBuild.result = "SUCCESS"
 
     try {
-
-       stage('Cleanup'){
+      // https://javadoc.jenkins.io/plugin/workflow-support/org/jenkinsci/plugins/workflow/support/steps/build/RunWrapper.html
+      RunWrapper	getPreviousBuild()	 
+      RunWrapper	getPreviousBuildInProgress()	 
+      RunWrapper	getPreviousBuiltBuild()	 
+      RunWrapper	getPreviousCompletedBuild()	 
+      RunWrapper	getPreviousFailedBuild()	 
+      RunWrapper	getPreviousNotFailedBuild()	 
+      RunWrapper	getPreviousSuccessfulBuild()
+      stage('Cleanup'){
           cleanWs()
           def scmVars = checkout scm
           env.GIT_COMMIT = scmVars.GIT_COMMIT
 
           // def build = currentBuild.getPreviousBuild()
-          def build = currentBuild.getPreviousCompletedBuild()
-          def lastBuildResult = build.getResult()
-          if(lastBuildResult) {
-            echo "$lastBuildResult"
-          }
+          def build = currentBuild.getPreviousSuccessfulBuild()
+          def LAST_GIT_COMMIT = build.getBuildVariables().get('GIT_COMMIT')
 
-          def cause = currentBuild.getBuildVariables().get('GIT_COMMIT')
-          // [0].getUpstreamBuild().getRawBuild().getEnvVars()
-          echo "$cause"
+          echo "CURRENT_COMMIT: ${env.GIT_COMMIT}"
+          echo "LAST_COMMIT: ${LAST_GIT_COMMIT}"
+          
+
           // upstreamCause.properties.each{ println "$it.key->$it.value" }
           // echo ""
           // def r = currentBuild.getCauses().get(0).getUpstreamBuild().getEnvVars().get("BRANCH_NAME", "")
@@ -92,7 +97,7 @@ node {
     }
     catch (err) {
 
-        // currentBuild.result = "FAILURE"
+        currentBuild.result = "FAILURE"
 
         //     mail body: "project build error is here: ${env.BUILD_URL}" ,
         //     from: 'xxxx@yyyy.com',
