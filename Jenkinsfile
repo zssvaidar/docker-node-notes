@@ -3,6 +3,7 @@ node {
     currentBuild.result = "SUCCESS"
 
     try {
+      env.APP_NAME = 'jarvis'
       // https://javadoc.jenkins.io/plugin/workflow-support/org/jenkinsci/plugins/workflow/support/steps/build/RunWrapper.html
       // RunWrapper	getPreviousBuild()	 
       // RunWrapper	getPreviousBuildInProgress()	 
@@ -99,6 +100,8 @@ node {
               extras: "\
                       -e artifact_fullpath=${env.ARTIFACT_FULL_PATH}\
                       -e dest_artifact_path=$dest_artifact_path\
+                      -e artifact_name=$artifact_name\
+                      -e app_name=${env.APP_NAME}\
                       -e dest_env_variable_parse=$dest_env_variable_parse\
                       -e dest_env_path=$dest_env_path\
                       -e ansible_become_password=123412\
