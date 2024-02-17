@@ -3,9 +3,8 @@ node {
     currentBuild.result = "SUCCESS"
 
     try {
-      environment {
-        APP_NAME = 'jarvis'
-      }
+      env.APP_NAME = 'jarvis'
+
       // https://javadoc.jenkins.io/plugin/workflow-support/org/jenkinsci/plugins/workflow/support/steps/build/RunWrapper.html
       // RunWrapper	getPreviousBuild()	 
       // RunWrapper	getPreviousBuildInProgress()	 
