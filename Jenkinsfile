@@ -101,7 +101,7 @@ node {
               extras: "\
                       -e artifact_fullpath=${env.ARTIFACT_FULL_PATH}\
                       -e dest_artifact_path=$dest_artifact_path\
-                      -e artifact_name=$artifact_name\
+                      -e artifact_name=${env.ARTIFACT_NAME}\
                       -e app_name=${env.APP_NAME}\
                       -e dest_env_variable_parse=$dest_env_variable_parse\
                       -e dest_env_path=$dest_env_path\
